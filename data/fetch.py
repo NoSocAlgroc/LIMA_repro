@@ -5,10 +5,10 @@ import os
 
 
 
-def fetch(years=list(range(2020,2025)),months=list(range(1,13)),dataDir="data/",cols=list(range(56))):
+def fetch(dates={2020:[11,12],2021:[1,2]},dataDir="data/",cols=list(range(56))):
     os.makedirs(dataDir, exist_ok=True)
-    for year in years:
-        for month in months:
+    for year in dates:
+        for month in dates[year]:
             fileName=f"On_Time_Reporting_Carrier_On_Time_Performance_1987_present_{year}_{month}.zip"
             url="https://transtats.bts.gov/PREZIP/"+fileName
             response = requests.get(url, stream=True)

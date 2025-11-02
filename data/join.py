@@ -5,10 +5,10 @@ import numpy as np
 typeMap={np.dtypes.Int64DType():'Integer',np.dtypes.Float64DType():'Double',np.dtypes.ObjectDType():'String'}
 
 
-def join(years=list(range(2020,2025)),months=list(range(1,13)),dataDir="data/",cols=list(range(56))):
+def join(dates={2020:[11,12],2021:[1,2]},dataDir="data/",cols=list(range(56))):
     dfs=[]
-    for year in years: 
-        for month in months:
+    for year in dates:
+        for month in dates[year]:
             fileName=f"On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_{year}_{month}.csv"
             df=pd.read_csv(dataDir+fileName,low_memory=False)
             columns=df.columns[cols]
